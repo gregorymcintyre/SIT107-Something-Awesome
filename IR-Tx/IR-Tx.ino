@@ -1,27 +1,38 @@
+/*
+ * IRremote: IRsendRawDemo - demonstrates sending IR codes with sendRaw
+ * An IR LED must be connected to Arduino PWM pin 3.
+ * Version 0.1 July, 2009
+ * Copyright 2009 Ken Shirriff
+ * http://arcfn.com
+ *
+ * IRsendRawDemo - added by AnalysIR (via www.AnalysIR.com), 24 August 2015
+ *
+ * This example shows how to send a RAW signal using the IRremote library.
+ * The example signal is actually a 32 bit NEC signal.
+ * Remote Control button: LGTV Power On/Off. 
+ * Hex Value: 0x20DF10EF, 32 bits
+ * 
+ * It is more efficient to use the sendNEC function to send NEC signals. 
+ * Use of sendRaw here, serves only as an example of using the function.
+ * 
+ */
+
+
 #include <IRremote.h>
+
 IRsend irsend;
 
 void setup()
 {
-  Serial.begin(9600);
+
 }
 
 void loop() {
-  //if (Serial.read() != -1) {
-    //for (int i = 0; i < 3; i++) {
-      //irsend.sendNEC(0xEAD02569, 32);  //HEX of Rx Data
-      irsend.sendNEC(0xD67E4BC0, 32);
-      //delay(100);
-      irsend.sendNEC(0x07200000, 28);
-      irsend.sendNEC(0xFFFFFFFF, 32);  //HEX of Rx Data
+  int khz = 38; // 38kHz carrier frequency for the NEC protocol
+  unsigned int irSignal[] = {3500, 1650, 450, 400, 450, 1250, 450, 350, 450, 400, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 1250, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 1250, 450, 1250, 450, 1250, 450, 400, 450, 350, 450, 1300, 450, 350, 450, 350, 500, 350, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450 };
+}; //AnalysIR Batch Export (IRremote) - RAW
+  
+  irsend.sendRaw(irSignal, sizeof(irSignal) / sizeof(irSignal[0]), khz); //Note the approach used to automatically calculate the size of the array.
 
-      //FB38C7
-
-      //irsend.sendNEC(0x00FB38C7, 32);
-      //irsend.sendNEC(0xFFFFFFFF, 32);  //HEX of Rx Data
-      
-      Serial.println("Tx");
-      delay(10000);
-    //}
-  //}
-} 
+  delay(5000); //In this example, the signal will be repeated every 5 seconds, approximately.
+}
