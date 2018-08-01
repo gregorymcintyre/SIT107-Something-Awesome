@@ -9,9 +9,18 @@ void setup()
 void loop() {
   //if (Serial.read() != -1) {
     //for (int i = 0; i < 3; i++) {
-      irsend.sendNEC(0xEAD02569, 32);  //HEX of Rx Data
-      //irsend.sendNEC(0x7200000, 32);
+      //irsend.sendNEC(0xEAD02569, 32);  //HEX of Rx Data
+      //irsend.sendNEC(0xD67E4BC0, 32);
+      //irsend.sendNEC(0xFFFFFFFF, 32);
+      //delay(100);
+      //irsend.sendNEC(0x7200000, 28);
+      //irsend.sendNEC(0xFFFFFFFF, 32);  //HEX of Rx Data
+
+      //FB38C7
+
+      irsend.sendNEC(0xFB38C7, 24);
       irsend.sendNEC(0xFFFFFFFF, 32);  //HEX of Rx Data
+      
       Serial.println("Tx");
       delay(5000);
     //}
