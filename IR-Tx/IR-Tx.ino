@@ -18,11 +18,11 @@ void loop() {
 
       //FB38C7
 
-      irsend.sendNEC(0xFB38C7, 24);
+      irsend.sendNEC(0x00FB38C7, 32);
       irsend.sendNEC(0xFFFFFFFF, 32);  //HEX of Rx Data
       
       Serial.println("Tx");
-      delay(5000);
+      delay(3 0000);
     //}
   //}
 } 
