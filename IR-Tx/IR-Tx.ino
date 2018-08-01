@@ -35,4 +35,3 @@ void loop() {
 
   delay(5000); //In this example, the signal will be repeated every 5 seconds, approximately.
 }
-
