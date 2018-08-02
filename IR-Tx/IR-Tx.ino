@@ -37,6 +37,7 @@ void loop() {
 
   hum = dht.readHumidity();
   temp= dht.readTemperature();
+  flag = 0;
 
   if(hum>=OPTIMALHUM && temp>=OPTIMALTEMP){
 
@@ -47,11 +48,15 @@ void loop() {
   Serial.print(temp);
   Serial.println(" Celsius");
   */
-  
-  unsigned int irSignal[] = {3500, 1650, 450, 400, 450, 1250, 450, 350, 450, 400, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 1250, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 1250, 450, 1250, 450, 1250, 450, 400, 450, 350, 450, 1300, 450, 350, 450, 350, 500, 350, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450}; //AnalysIR Batch Export (IRremote) - RAW
-  irsend.sendRaw(irSignal, sizeof(irSignal) / sizeof(irSignal[0]), KHZ); //Note the approach used to automatically calculate the size of the array.
-  
+
+  flag =1;
+   
   //Serial.println("Tx"); //to indicate Trasmission during testing
+  }
+
+  if (flag) {
+    unsigned int irSignal[] = {3500, 1650, 450, 400, 450, 1250, 450, 350, 450, 400, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 1250, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 1250, 450, 1250, 450, 1250, 450, 400, 450, 350, 450, 1300, 450, 350, 450, 350, 500, 350, 450, 350, 500, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450, 350, 450, 400, 450}; //AnalysIR Batch Export (IRremote) - RAW
+  irsend.sendRaw(irSignal, sizeof(irSignal) / sizeof(irSignal[0]), KHZ); //Note the approach used to automatically calculate the size of the array.
   }
   
   delay(2000);
