@@ -1,5 +1,6 @@
 # SIT107 - Task 3.5HD - Something Awesome
 
+
 '''
 this repo is a work in progress many details will be updated and developed over its life cycle
 '''
@@ -11,6 +12,9 @@ The objective of this project to develop a program that will observe Temp and Hu
 
 ## Instrustions for Use
 
-1. download the repo and add the IRremote.zip to library
-2. connect he IR Rx and record code for your remote
-3. ongoing
+1. download the repo and add the IRremote.zip to libraries (3 required)
+2. connect he IR Rx and record code for your remote (see circuit diagrams)
+3. upload IR-RX.ino
+4. connect the IT TX and DHT22 (see circuit diagram)
+5. upload IR-Tx.ino
+4. enjoy this code will only work for a specific aircon code will need to be recorded and implemented with a sendNEC to work correctly, this program currently sends in raw due to unexpected technical dificulties
